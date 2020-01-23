@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'rozaqku',
-	'password' => 'rooz',
-	'database' => 'pendaftaran_pasien',
+	'hostname' => 'matrash.id',
+	'username' => 'u7612757_apotek',
+	'password' => 'akupadamu@',
+	'database' => 'u7612757_apotek',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
