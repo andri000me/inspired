@@ -5,7 +5,7 @@ class Dokter extends CI_Controller {
 
 	public function index()
 	{
-        $data['konten'] = 'admin/home';
+        $data['konten'] = 'dokter/home';
 		$this->load->view('admin/dashboard', $data);
 	}
 }

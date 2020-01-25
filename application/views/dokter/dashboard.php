@@ -20,16 +20,6 @@
 
     <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
     <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/gridData.js"></script>
-    <style>
-        .panel-heading a {
-            text-decoration: none;
-            color: white;
-        }
-        .panel-heading a:hover {
-            text-decoration: none;
-            color: black;
-         }
-    </style>
 </head>
 
 <body>

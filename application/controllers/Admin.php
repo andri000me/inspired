@@ -10,9 +10,57 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
-        $data['konten'] = 'admin/home';
+		$data = [
+			'konten' => 'admin/home',
+			'loket1' => $this->M_Antrian->loket1(),
+			'loket2' => $this->M_Antrian->loket2(),
+			'loket3' => $this->M_Antrian->loket3()
+		];
 		$this->load->view('admin/dashboard', $data);
 	}
+
+	// Panggil Antrian
+	public function panggilAntrian($idloket)
+	{
+		$check = (array)$this->M_Antrian->checkAntrian($idloket);
+		$urut = implode($check);
+		$ab = $urut + 1;
+
+		$data = [
+			'nomor' => $ab,
+			'loket' => $idloket
+		];
+
+		$this->M_Antrian->insertAntrian($data);
+	
+		$this->load->view('admin/panggil_antrian', [
+				'idloket' => $idloket,
+				'nomorurut' => $ab,
+				'panjang' => strlen($ab)
+			]);
+
+		$mboh = [
+			'konten' => 'admin/home',
+			'loket1' => $this->M_Antrian->loket1(),
+			'loket2' => $this->M_Antrian->loket2(),
+			'loket3' => $this->M_Antrian->loket3()
+		];
+
+		$this->load->view('admin/dashboard', $mboh);
+	}
+
+	public function resetAntrian()
+	{
+		$this->M_Antrian->resetAntrain();
+		$this->session->set_flashdata('notif', '<div class="alert alert-success alert-dismissible"> Success! Nomor Antrian sudah berhasil di reset.
+												</div>');
+												
+        redirect(base_url('admin'));
+
+	}
+
+
+	// Daftar Pasien
 
 	public function pendaftaranpasien()
 	{
@@ -173,7 +221,6 @@ class Admin extends CI_Controller {
 	}
 
 
-
 	public function get_pasienAutoComp(){
         if (isset($_GET['term'])) {
             $result = $this->M_Pasien->search_pasien($_GET['term']);
@@ -184,7 +231,6 @@ class Admin extends CI_Controller {
             }
         }
 	}
-
 	
 	public function get_dataPasien()
 	{
@@ -197,9 +243,6 @@ class Admin extends CI_Controller {
 		);
 		echo json_encode($data);
 	}
-
-
-
 
 	public function master()
 	{
