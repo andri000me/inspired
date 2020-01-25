@@ -9,6 +9,16 @@ class M_Pasien extends CI_MODEL {
         return $this->db->get('data_pasien')->result();
     }
 
+    public function autoCompPasienRekam($get)
+    {
+        $date = date('Y-m-d');
+        $query = $this->db->query("SELECT * FROM `antrian` 
+        JOIN data_dokter ON data_dokter.no = antrian.kode_dokter 
+        JOIN data_pasien ON data_pasien.no = antrian.id_pasien
+        WHERE antrian.kode_dokter = 2 AND antrian.tgl_berobat = '$date' AND data_pasien.nama_pasien LIKE '%$get%'");
+        return $query->result();
+    }
+
     public function get_dataPasien($nama)
     {
         $this->db->like('nama_pasien', $nama, 'both');
@@ -38,5 +48,10 @@ class M_Pasien extends CI_MODEL {
     public function delete($id){
 		$this->db->where('no', $id);
 		$this->db->delete('data_pasien');
-	}
+    }
+    
+    public function insertDiagnosa($data)
+    {
+        $this->db->insert('rekam_medis', $data);
+    }
 }

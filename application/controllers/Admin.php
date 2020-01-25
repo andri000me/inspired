@@ -12,10 +12,9 @@ class Admin extends CI_Controller {
 	{
 		$data = [
 			'konten' => 'admin/home',
-			'loket1' => $this->M_Antrian->loket1(),
-			'loket2' => $this->M_Antrian->loket2(),
-			'loket3' => $this->M_Antrian->loket3()
+			'dokter' => $this->M_Dokter->getDokterCount()
 		];
+		
 		$this->load->view('admin/dashboard', $data);
 	}
 
@@ -41,9 +40,7 @@ class Admin extends CI_Controller {
 
 		$mboh = [
 			'konten' => 'admin/home',
-			'loket1' => $this->M_Antrian->loket1(),
-			'loket2' => $this->M_Antrian->loket2(),
-			'loket3' => $this->M_Antrian->loket3()
+			'dokter' => $this->M_Dokter->getDokterCount()
 		];
 
 		$this->load->view('admin/dashboard', $mboh);
@@ -81,14 +78,16 @@ class Admin extends CI_Controller {
             'id_pasien' 		=> $this->input->post("id_pasien"),
             'kode_dokter'       => $this->input->post("kode_dokter"),
             'no_antrian'        => $urut + 1,
-            'tgl'    			=> $tgl
+            'tgl_berobat'    	=> $tgl
 		);
 
-        $this->M_Antrian->save($data);
-        $this->session->set_flashdata('notif', '<div class="alert alert-success alert-dismissible"> Success! data berhasil disimpan didatabase.
-												</div>');
-												
-        redirect(base_url('admin/pendaftaranpasien'));
+		$this->M_Antrian->save($data);			
+		$parsing = [
+			'loketdokter' => $this->M_Dokter->getbyId($this->input->post("kode_dokter")),
+			'nomor' 	  => $urut + 1,
+			'tanggal' 	  => $tgl
+		];
+        $this->load->view('admin/cetakantrian', $parsing);
 	}
 
 
@@ -182,7 +181,8 @@ class Admin extends CI_Controller {
 	public function storePasien()
 	{
 		$post = $this->input->post();
-
+		$post['password'] = md5($post->password);
+		
         $this->M_Pasien->save($post);
         $this->session->set_flashdata('notif', '<div class="alert alert-success alert-dismissible"> Success! data berhasil disimpan didatabase.
 												</div>');
@@ -236,13 +236,61 @@ class Admin extends CI_Controller {
 	{
 		$row = $this->M_Pasien->get_dataPasien($_GET['nama']);
 		$data = array(
+			'nama_pasien' => $row->nama_pasien,
 			'no' => $row->no,
 			'umur' => $row->umur,
 			'alamat' => $row->alamat,
-			'hp' => $row->no_tlp
+			'hp' => $row->no_tlp,
+			'tgl_berobat' => date('Y-m-d')
 		);
 		echo json_encode($data);
 	}
+
+	// rekam medis
+	public function rekammedis()
+	{
+		$data['konten'] = 'admin/rekam_medis';
+		$data['dokter'] = $this->M_Dokter->getAll();
+		$this->load->view('admin/dashboard', $data);
+	}
+	
+	public function rekammedisform()
+	{
+		$id = $this->input->post('dokter');
+		$this->session->set_userdata('id_dokter', $id);
+		$data['konten'] = 'admin/rekam_medis_form';
+		$data['dokter'] = $this->M_Dokter->getbyId($id);
+		$this->load->view('admin/dashboard', $data);
+	}
+
+	public function storerekammedis()
+	{
+		$data = array(
+            'id_pasien' 	=> $this->input->post("id_pasien"),
+            'id_dokter'     => $this->input->post("id_dokter"),
+            'tgl_berobat'   => $this->input->post("tgl_berobat"),
+            'diagnosa'      => $this->input->post("diagnosa"),
+            'terapi'       	=> $this->input->post("terapi")
+		);
+
+		$this->M_Pasien->insertDiagnosa($data);
+		$this->session->set_flashdata('notif', '<div class="alert alert-success alert-dismissible"> Success! data rekam medis berhasil Ditambahkan.
+												</div>');
+		redirect(base_url('admin/rekammedis'));
+	}
+
+	public function autoCompPasienRekam()
+	{
+		if (isset($_GET['term'])) {
+            $result = $this->M_Pasien->autoCompPasienRekam($_GET['term']);
+            if (count($result) > 0) {
+            foreach ($result as $row)
+                $arr_result[] = $row->nama_pasien;
+                echo json_encode($arr_result);
+            }
+        }
+	}
+
 
 	public function master()
 	{

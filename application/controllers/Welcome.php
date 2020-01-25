@@ -22,4 +22,22 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+
+	public function pendaftaran()
+	{
+		$this->load->view('pendaftaran');
+	}
+
+	public function storePasien()
+	{
+		$this->load->model('M_Pasien');
+		$post = $this->input->post();
+		$post['password'] = md5($post->password);
+
+        $this->M_Pasien->save($post);
+        $this->session->set_flashdata('notif', '<div class="alert alert-success alert-dismissible"> Success! Silahkan Login menggunakan Username dan Password anda yang baru saja anda daftarkan.
+												</div>');
+												
+        redirect(base_url(''));
+	}
 }

@@ -1,8 +1,4 @@
 ###################
-Tutorial instalasi : https://docs.google.com/document/d/10RzOvKRWEGdI8D1LezG9-TLtJ9IOXM-qOv14N3jptRU/edit?usp=sharing
-###################
-
-###################
 What is CodeIgniter
 ###################
 

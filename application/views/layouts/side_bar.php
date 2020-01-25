@@ -1,7 +1,7 @@
 <ul id="active" class="nav navbar-nav side-nav">
     <li><a href="<?= base_url().$this->uri->segment(1) ?>"><i class=""></i>Halaman Utama</a></li>
     <li><a href="<?= base_url() ?>admin/pendaftaranpasien"><i class=""></i>Pendaftaran Pasien</a></li>
-    <li><a href="rekam_medis.php"><i class=""></i>Rekam Medis</a></li>
+    <li><a href="<?= base_url() ?>admin/rekammedis"><i class=""></i>Rekam Medis</a></li>
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             Data Dokter <span class="caret"></span>

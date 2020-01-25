@@ -52,6 +52,11 @@
 							<center><?php echo $this->session->flashdata('message');?></center>
 						</span>
 					</div>
+					<div class="alert-success" role="alert">
+						<span>
+							<center><?php echo $this->session->flashdata('notif');?></center>
+						</span>
+					</div>
 					<br>
 
 					<div class="wrap-input100 validate-input" data-validate="Valid">
@@ -81,7 +86,7 @@
 							Pasien Baru?
 						</span>
 
-						<a class="txt2" href="pendaftaran.php">
+						<a class="txt2" href="<?= base_url() ?>pendaftaran">
 							Daftar
 							<i class="zmdi zmdi-arrow-right"></i>
 						</a>

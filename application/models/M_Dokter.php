@@ -5,6 +5,15 @@ class M_Dokter extends CI_MODEL {
     public function getAll()
     {
         return $this->db->get('data_dokter')->result();
+        
+    }
+
+    public function getDokterCount()
+    {
+        $query = $this->db->query("SELECT data_dokter.*, COUNT(*) as jumlah_antrian FROM `data_dokter`
+        JOIN nomorantrian ON nomorantrian.loket = data_dokter.loket
+        GROUP BY data_dokter.loket");
+        return $query->result();
     }
 
     public function save($data)

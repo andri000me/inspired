@@ -10,7 +10,7 @@ class M_Antrian extends CI_MODEL {
     public function noAntrian($tgl)
     {
         $this->db->select_max('no_antrian');
-        $this->db->where('tgl', $tgl);
+        $this->db->where('tgl_berobat', $tgl);
         $query = $this->db->get('antrian');
         return $query->row();
     }

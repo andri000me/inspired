@@ -11,7 +11,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <h3>TAMBAH DATA DOKTER</h3>
+                                    <h3>TAMBAH DATA PASIEN</h3>
                                     <div class="col-lg-6">
                                         <form role="form" action="<?= base_url() ?>/admin/storePasien" method="post">
                                             <div class="form-group">
@@ -53,6 +53,16 @@
                                             <div class="form-group">
                                                 <label>Keterangan :</label>
                                                 <input class="form-control" name="keterangan">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Username :</label>
+                                                <input class="form-control" name="username">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Password :</label>
+                                                <input type="password" class="form-control" name="password">
                                             </div>
 
                                             <button type="submit" class="btn btn-default">Simpan</button>

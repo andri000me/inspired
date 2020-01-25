@@ -39,7 +39,7 @@
                                             <select class="form-control" id="kode_dokter" name="kode_dokter" required>
                                                 <option value="">-- Pilih Dokter --</option>
                                                 <?php foreach($dokter as $dokters) { ?>
-                                                    <option value="<?= $dokters->no ?>"><?= $dokters->nama_dokter ?></option>
+                                                    <option value="<?= $dokters->no ?>"><?= strtoupper($dokters->nama_dokter)." | ".$dokters->spesialis ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>

@@ -18,11 +18,14 @@
 					<center><?php echo $this->session->flashdata('notif');?></center>
 				</span>
 			</div>
+
+
+			<?php foreach($dokter as $data) {  ?>
 			<div class="col-lg-2">
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<center>
-							<h3 class="panel-title"><i class=""></i>Loket 1</h3>
+							<h3 class="panel-title"><i class=""></i>Spesialis <?= $data->spesialis ?> <br> (Loket <?= $data->loket ?>)</h3>
 						</center>
 					</div>
 					<div class="panel-body">
@@ -38,119 +41,26 @@
 								<div class="stat">
 									<center>
 										<div class="info">
-											<h1><?= $loket1->nomor ?></h1>
+											<h1><?= $data->jumlah_antrian-1; ?></h1>
 										</div>
 									</center>
 								</div>
 							</li>
-							<li>
-								<div class="stat">
-									<center>
-										<div class="info">Dari 10</div>
-									</center>
-								</div>
-							</li>
+							
 						</ul>
 					</div>
 					<div class="panel-heading">
 						<center>
-							<a href="<?= base_url() ?>admin/panggilAntrian/1">
+							<a href="<?= base_url() ?>admin/panggilAntrian/<?= $data->loket ?>">
 								<h3 class="panel-title panggil">PANGGIL</h3>
 							</a>
 						</center>
 					</div>
 				</div>
 			</div>
-				<a href="<?= base_url() ?>admin/resetAntrian" class="btn btn-danger">RESET</a>
-
-
-			<div class="col-lg-2">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<center>
-							<h3 class="panel-title"><i class=""></i>Loket 2</h3>
-						</center>
-					</div>
-					<div class="panel-body">
-						<ul class="server-stats">
-							<li>
-								<div class="stat">
-									<center>
-										<div class="info">No. Antrian</div>
-									</center>
-								</div>
-							</li>
-							<li>
-								<div class="stat">
-									<center>
-										<div class="info">
-											<h1><?= $loket2->nomor ?></h1>
-										</div>
-									</center>
-								</div>
-							</li>
-							<li>
-								<div class="stat">
-									<center>
-										<div class="info">Dari 10</div>
-									</center>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="panel-heading">
-						<center>
-							<a href="<?= base_url() ?>admin/panggilAntrian/2">
-								<h3 class="panel-title">PANGGIL</h3>
-							</a>
-						</center>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-2">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<center>
-							<h3 class="panel-title"><i class=""></i>Loket 3</h3>
-						</center>
-					</div>
-					<div class="panel-body">
-						<ul class="server-stats">
-							<li>
-								<div class="stat">
-									<center>
-										<div class="info">No. Antrian</div>
-									</center>
-								</div>
-							</li>
-							<li>
-								<div class="stat">
-									<center>
-										<div class="info">
-											<h1><?= $loket3->nomor ?></h1>
-										</div>
-									</center>
-								</div>
-							</li>
-							<li>
-								<div class="stat">
-									<center>
-										<div class="info">Dari 10</div>
-									</center>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="panel-heading">
-						<center>
-							<a href="<?= base_url() ?>admin/panggilAntrian/3">
-								<h3 class="panel-title">PANGGIL</h3>
-							</a>
-						</center>
-					</div>
-				</div>
-			</div>
+			<?php } ?>
+			
+			<a href="<?= base_url() ?>admin/resetAntrian" class="btn btn-danger">RESET</a>
 
 		</div>
 		<!-- /#wrapper -->
