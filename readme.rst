@@ -5,7 +5,7 @@ Tutorial Instalasi https://docs.google.com/document/d/10RzOvKRWEGdI8D1LezG9-TLtJ
 Fitur Fase 1 :
 
 1. Autentikasi + level role
-2. Admin crud data master seperti : dokter, pasien
+2. Admin crud data master seperti : dokter, pasien, asdok
 3. Antrian (ambil nomer)
 4. Rekam medik sederhana (diagnosa, penanganan)
 
@@ -16,3 +16,13 @@ Alur Penggunaan :
 3. Nomer antrian tercetak (Nomer Antrian)
 4. Pasien menunggu nomer antrian di panggil pada halaman admin (Panggil nomer antrian dengan suara)
 5. Setelah berobat, data pasien akan di inputkan diagnosa lewat halaman admin (Rekam Medik)
+
+Kekurangan :
+
+1. crud data asdok, yang dapat berelasi dengan seorang dokter
+2. pasien dapat login, dan melihat historis berobat
+3. asdok dapat login dan dapat 
++ melihat seluruh data rekamedik pasien yang berobat dengan dokter yang berelasi dengan asdok
++ mendaftarkan pasien khusus dokter yang berelasi dengan asdok
++ inputkan diagnosa dan penanganan hasil berobat pasien berdasarkan dokter yang berelasi dengan asdok
++ panggil nomer antrian khusus pasien berdasarkan dokter berelasi dengan asdok
