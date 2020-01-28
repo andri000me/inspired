@@ -7,7 +7,7 @@ Fitur Fase 1 :
 1. Autentikasi + level role
 2. Admin crud data master seperti : dokter, pasien
 3. Antrian (ambil nomer)
-4. Rekam medik sederhana (diagnosa, penanganan, biaya)
+4. Rekam medik sederhana (diagnosa, penanganan)
 
 Alur Penggunaan :
 
