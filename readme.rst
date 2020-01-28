@@ -26,3 +26,4 @@ Kekurangan :
 + mendaftarkan pasien khusus dokter yang berelasi dengan asdok
 + inputkan diagnosa dan penanganan hasil berobat pasien berdasarkan dokter yang berelasi dengan asdok
 + panggil nomer antrian khusus pasien berdasarkan dokter berelasi dengan asdok
+
