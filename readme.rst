@@ -3,12 +3,14 @@ Tutorial Instalasi https://docs.google.com/document/d/10RzOvKRWEGdI8D1LezG9-TLtJ
 ###################
 
 Fitur Fase 1 :
+
 1. Autentikasi + level role
 2. Admin crud data master seperti : dokter, pasien
 3. Antrian (ambil nomer)
 4. Rekam medik sederhana (diagnosa, penanganan, biaya)
 
 Alur Penggunaan :
+
 1. Pasien mendaftar melalui halaman pendaftaran pasien atau lewat halaman admin (Pendaftaran Pasien)
 2. Setelah mendaftar, pasien dapat melakukan pendaftaran berobat. Saat melakukan pendaftaran berobat, admin menginputkan data diri pasien serta dokter yang di tuju melalui halaman admin (Pendaftaran Berobat)
 3. Nomer antrian tercetak (Nomer Antrian)
