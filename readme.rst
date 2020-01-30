@@ -21,9 +21,10 @@ Kekurangan :
 
 1. crud data asdok, yang dapat berelasi dengan seorang dokter
 2. pasien dapat login, dan melihat historis berobat
-3. asdok dapat login dan dapat 
-+ melihat seluruh data rekamedik pasien yang berobat dengan dokter yang berelasi dengan asdok
-+ mendaftarkan pasien khusus dokter yang berelasi dengan asdok
-+ inputkan diagnosa dan penanganan hasil berobat pasien berdasarkan dokter yang berelasi dengan asdok
-+ panggil nomer antrian khusus pasien berdasarkan dokter berelasi dengan asdok
+3. asdok dapat login dan dapat :
+
++ melihat seluruh data rekamedik pasien yang berobat dengan dokter yang berelasi dengan asdok<br>
++ mendaftarkan pasien khusus dokter yang berelasi dengan asdok<br>
++ inputkan diagnosa dan penanganan hasil berobat pasien berdasarkan dokter yang berelasi dengan asdok<br>
++ panggil nomer antrian khusus pasien berdasarkan dokter berelasi dengan asdok<br>
 
